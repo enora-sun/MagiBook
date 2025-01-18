@@ -1,0 +1,1 @@
+export const questions: string[] = ["food you want right now"];
