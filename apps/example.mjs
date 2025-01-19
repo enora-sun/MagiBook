@@ -20,7 +20,7 @@ console.log(textCompletion.choices[0].message);
 
 if (textCompletion.choices && textCompletion.choices.length > 0 && textCompletion.choices[0].message) {
     let promptBody = textCompletion.choices[0].message.content; 
-    let refinedImagePrompt = `${promptBody} (illustration without text, absolutely)`;
+    let refinedImagePrompt = `${promptBody} (illustration without text, absolutely)(in cute, cartoon style)`;
 
     const translationCompletion = await openai.chat.completions.create({
         model: "gpt-4o-mini",

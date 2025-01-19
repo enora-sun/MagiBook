@@ -59,7 +59,7 @@ app.post('/generate', async (req, res) => {
     // generate the image based on the story
     const imageResponse = await openai.images.generate({
       model: 'dall-e-3',
-      prompt: storyText + ' (illustration without text, absolutely)',
+      prompt: storyText + ' (illustration without text, absolutely)(in cute, cartoon style)',
       size: '1024x1024',
       quality: 'standard',
       n: 1,
