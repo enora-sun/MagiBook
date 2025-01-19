@@ -1,6 +1,11 @@
 /* Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Abel&family=Acme&family=Mochiy+Pop+One&display=swap');
 
+/* * {
+  border-color: red;
+  border: solid;
+} */
+
 .mochiy {
   font-family: "Mochiy Pop One", serif;
   font-weight: 400;
@@ -191,4 +196,136 @@ body {
   padding: 20px;
   overflow-y: auto; /* Enable scrolling if content exceeds the viewport */
   background-color: #fffdfa; /* Light cream background */
+}
+
+/* Stories */
+
+.story-collection {
+  margin: 40px;
+  font-family: "Arial", sans-serif;
+  margin-bottom: 10px;
+}
+
+.story-collection h2 {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.stories-grid {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+  margin-left: 10px;
+}
+
+.story-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  box-shadow: 0px 0px 3px #999;
+  border-radius: 8px;
+  text-align: center;
+  height: 280px;
+  width: 200px;
+}
+
+.story-card.new-story {
+  background-color: #f2f2f2;
+  color: #c59cdc;
+  font-size: 24px;
+}
+
+.story-card h3 {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.story-card p {
+  font-size: 14px;
+  color: #707070;
+}
+
+.vertical-line {
+  width: 3px;
+  margin: 0px 5px;
+  border-radius: 5px;
+  background-color: rgb(190, 190, 190);
+  box-shadow: 0px 0px 4px #c6c6c6 inset;
+}
+
+.green {
+  background-color: #ceea98;
+}
+
+.blue {
+  background-color: #63d0eb;
+}
+
+.yellow {
+  background-color: #fed45c;
+}
+
+/* Favourites */
+
+.favorites-section {
+  margin: 40px;
+  font-family: "Arial", sans-serif;
+}
+
+.favorites-section h2 {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.favorites-h2 {
+  font-size: 40px;
+}
+
+.favorites-grid {
+  display: flex; /* Use flex for a horizontal scroll */
+  overflow-x: auto; /* Enable horizontal scrolling */
+  gap: 20px; /* Add spacing between cards */
+  padding: 10px; /* Add padding inside the scrollable area */
+  height: auto;
+  scrollbar-width: thin; /* For Firefox */
+  scrollbar-color: #c59cdc transparent; /* Custom scrollbar color */
+}
+
+/* Customize scrollbar for webkit browsers */
+.favorites-grid::-webkit-scrollbar {
+  height: 8px; /* Horizontal scrollbar height */
+}
+
+.favorites-grid::-webkit-scrollbar-thumb {
+  background-color: #c59cdc; /* Scrollbar color */
+  border-radius: 4px; /* Rounded scrollbar */
+}
+
+.favorites-grid::-webkit-scrollbar-track {
+  background-color: transparent; /* Scrollbar track color */
+}
+
+.favorite-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex: 0 0 auto; /* Prevent cards from shrinking and maintain size */
+  width: 240px; /* Set consistent card width */
+}
+
+.favorite-card img {
+  width: 100%;
+  height: 320px; /* Fixed height for images */
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.favorite-card p {
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 5px;
 }
