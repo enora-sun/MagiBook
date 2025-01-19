@@ -95,3 +95,46 @@ body {
   margin-right: 10px;
   font-size: 20px;
 }
+
+/* NavBar */
+
+.nav {
+  background-color: #c59cdc; /* Purple background */
+  height: 100vh;
+  width: 80px; /* Adjust width as needed */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+.nav-logo {
+  margin-bottom: 20px;
+}
+
+.nav-logo-icon {
+  width: 50px;
+  height: 50px;
+}
+
+.nav-divider {
+  width: 50%;
+  border: 0.5px solid #000; /* Divider line */
+  margin: 20px 0;
+}
+
+.nav-item {
+  margin: 20px 0;
+}
+
+.nav-icon {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.nav-icon:hover {
+  transform: scale(1.1); /* Slightly enlarge icon on hover */
+}
