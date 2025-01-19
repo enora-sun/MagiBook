@@ -12,25 +12,28 @@ export default function Question({ used }) {
 
   used = [...used, random];
   const q = questions[random];
-  
+
   return (
-    <div className='question-wrapper'>
-      <NavBar/>
-      <Header word={q.title} />
-      <InputField />
-      <Selection category={q} />
-      <Buttons />
+    <div className='home-wrapper'>
+      <NavBar />
+      <div className='question-wrapper'>
+        <Header word={q.title} />
+        <InputField />
+        <Selection category={q} />
+        <div className='buttons-section'><Buttons /></div>
+      </div>
     </div>
+
   )
 }
 
 function Header({ word }) {
   return (
     <div className="header">
-      <h1>
+      <h1 className='mochiy'>
         First...
         <br />
-        <span>What's your favourite {word}?</span>
+        <span className='acme'>What's your favourite {word}?</span>
       </h1>
     </div>
   );
@@ -42,16 +45,16 @@ function InputField() {
       <input
         type="text"
         placeholder="Type your response here!"
-        className="response-input"
+        className="response-input acme"
       />
-      <p className="or-text">OR</p>
+      <p className="or-text abel">OR</p>
     </div>
   );
 }
 
 function Selection({ category }) {
   return (
-    <div className="item-selection">
+    <div className="item-selection acme">
       <h2>Select a {category.title}</h2>
       <div className="item-grid">
         {category.items.map((item) => (
@@ -71,8 +74,8 @@ function Selection({ category }) {
 function Buttons() {
   return (
     <div className="buttons-section">
-      <button className="speak-button">I want to speak instead</button>
-      <button className="next-button">Next</button>
+      <button className="speak-button abel">I want to speak instead</button>
+      <button className="next-button abel">Next</button>
     </div>
   );
 }

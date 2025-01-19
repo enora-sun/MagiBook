@@ -350,3 +350,137 @@ body {
   font-weight: bold;
   margin-top: 5px;
 }
+
+/* Questions */
+.question-wrapper {
+  align-items: center;
+  margin: auto;
+}
+
+/* Header Section */
+.header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.header h1 {
+  font-size: 36px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.header span {
+  font-size: 24px;
+}
+
+.header span a {
+  color: #c59cdc;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.header span a:hover {
+  text-decoration: underline;
+}
+
+/* Input Section */
+.input-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px; /* Space between input and OR text */
+}
+
+.response-input {
+  width: 400px;
+  height: 40px;
+  font-size: 16px;
+  padding: 0 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.or-text {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+/* Selection Section */
+.item-selection {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.item-selection h2 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.item-grid {
+  display: flex;
+  gap: 20px; /* Space between items */
+  justify-content: center; /* Center items horizontally */
+}
+
+.category-card {
+  width: 80px;
+  height: 80px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.category-card:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.item-image {
+  width: 50px;
+  height: 50px;
+}
+
+/* Buttons Section */
+.buttons-section {
+  display: flex;
+  gap: 20px; /* Space between buttons */
+  margin-top: 20px; /* Space above buttons */
+  margin: auto;
+}
+
+.speak-button {
+  background-color: #d9f7be;
+  color: #333;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.speak-button:hover {
+  background-color: #b7eb8f;
+}
+
+.next-button {
+  background-color: #bae7ff;
+  color: #333;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.next-button:hover {
+  background-color: #91d5ff;
+}

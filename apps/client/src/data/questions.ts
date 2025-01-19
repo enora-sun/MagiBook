@@ -1,7 +1,7 @@
 export const questions = 
 [
   {
-    title: "desserts",
+    title: "dessert",
     items: [
       { id: 1, name: "Pancakes", image: "pancake-icon.png" },
       { id: 2, name: "Waffles", image: "waffle-icon.png" },
