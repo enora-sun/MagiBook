@@ -621,3 +621,7 @@ input:focus {
 .toggle-btn {
   margin-bottom: 5%;
 }
+
+.cards-wrapper {
+  margin-left: 10%;
+}

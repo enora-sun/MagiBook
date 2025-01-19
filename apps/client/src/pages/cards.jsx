@@ -13,7 +13,7 @@ export default function Cards() {
     <div className='home-wrapper'>
       <NavBar />
       <div className="cards-wrapper">
-        <h1 className="title">My Flashcards</h1>
+        <h1 className="title mochiy">My Flashcards</h1>
         <div className="flashcards-grid">
           {flashcards.map((card) => (
             <div
