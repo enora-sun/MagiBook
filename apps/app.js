@@ -2,8 +2,15 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
 const cors = require('cors');
+const OpenAI = require('openai');
 
+// Load environment variables
 dotenv.config();
+
+// Initialize OpenAI client with API key from .env
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY
+});
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -16,24 +23,24 @@ app.use(cors({
 
 app.use(bodyParser.json());
 
+// Root route
 app.get('/', (req, res) => {
   res.send('Welcome to the Storybook Generator API.');
 });
 
-// post to generate story and image (dummy data for testing)
+// POST route to generate story and image
 app.post('/generate', async (req, res) => {
   const { keywords } = req.body;
 
-  // input of 5 keywords
+  // Validate input: Ensure exactly 5 keywords are provided
   if (!Array.isArray(keywords) || keywords.length !== 5) {
     return res.status(400).json({ error: 'Please provide exactly 5 keywords.' });
   }
 
   try {
-    /*
-    // text story from OpenAI GPT-4
+    // Generate the story using OpenAI GPT-4o
     const textCompletion = await openai.chat.completions.create({
-      model: 'gpt-4o-mini',
+      model: 'gpt-4o',
       messages: [
         { role: 'system', content: "You are a world-renowned children's book author." },
         {
@@ -41,60 +48,51 @@ app.post('/generate', async (req, res) => {
           content: `Write a 200-word children's storybook using these 5 keywords: ${keywords.join(', ')}. The story should be engaging, creative, and appropriate for young readers aged 6 to 10.`,
         },
       ],
+      max_tokens: 500
     });
 
     const storyText = textCompletion.choices[0].message.content;
-    console.log("Generated Story: ", storyText);
-    
+
+    // Translate the story to Mandarin using OpenAI
     const translationCompletion = await openai.chat.completions.create({
-        model: "gpt-4o-mini",
-        messages: [
-            { role: "system", content: "You are a worldly-announced translator." },
-            {
-                role: "user",
-                content: `Translate ${storyText} to mandarin.`,
-            },
-        ],
+      model: 'gpt-4o',
+      messages: [
+        { role: 'system', content: "You are a professional translator." },
+        {
+          role: 'user',
+          content: `Translate the following story into Mandarin: "${storyText}"`,
+        },
+      ],
+      max_tokens: 600
     });
 
-    console.log(translationCompletion.choices[0].message);
+    const translatedStory = translationCompletion.choices[0].message.content;
 
-    // generate the image based on the story
+    // Generate an image based on the story using OpenAI DALL-E
     const imageResponse = await openai.images.generate({
       model: 'dall-e-3',
-      prompt: storyText + ' (illustration without text, absolutely)(in cute, cartoon style)',
+      prompt: `${storyText} (illustration without text, cute, cartoon style)`,
       size: '1024x1024',
       quality: 'standard',
-      n: 1,
+      n: 1
     });
 
     if (imageResponse.data && imageResponse.data.length > 0) {
       const imageUrl = imageResponse.data[0].url;
-    */
 
-    // Dummy data for testing
-    const storyText = `Once upon a time, a little cat named Whiskers found a magical ${keywords[0]} in the forest. With the help of a ${keywords[1]} and a wise old ${keywords[2]}, Whiskers embarked on a journey to discover the ${keywords[3]} and learn the true power of ${keywords[4]}.`;
-    const translatedStory = `从前，一个名叫 Whiskers 的小猫在森林里发现了一只神奇的 ${keywords[0]}。 在 ${keywords[1]} 和睿智的 ${keywords[2]} 的帮助下，Whiskers 开始了发现 ${keywords[3]} 并学习 ${keywords[4]} 真正力量的旅程。`;
-    const imageUrl = 'https://via.placeholder.com/1024';
-
-    console.log("Generated Story (Dummy Data): ", storyText);
-    console.log("Generated Image URL (Dummy Data): ", imageUrl);
-
-    // send back the story and image URL
-    res.json({ story: storyText, translatedStory: translatedStory, imageUrl: imageUrl });
-
-    /*
+      // Send back the generated story, translated version, and image URL
+      res.json({ story: storyText, translatedStory: translatedStory, imageUrl: imageUrl });
     } else {
       res.status(500).json({ error: 'Error generating image.' });
     }
-    */
 
   } catch (error) {
-    console.error(error);
+    console.error('Error:', error);
     res.status(500).json({ error: 'Error generating story and image.' });
   }
 });
 
+// Start the server
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });

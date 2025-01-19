@@ -5,7 +5,9 @@ import NavBar from '../components/navbar';
 export default function Story() {
   const location = useLocation();
   const navigate = useNavigate();
-  const { story, imageUrl } = location.state || {};
+  const { story, translatedStory, imageUrl } = location.state || {};
+
+  console.log(translatedStory);
 
   // Redirect to home if no data is passed
   if (!story || !imageUrl) {
@@ -20,6 +22,7 @@ export default function Story() {
         <h1 className="mochiy">Your Generated Story</h1>
         <img src={imageUrl} alt="Generated" className="story-image" />
         <p className="story-text abel">{story}</p>
+        <p className="story-text abel">{translatedStory}</p>
       </div>
     </div>
   );

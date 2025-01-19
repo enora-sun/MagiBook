@@ -1,5 +1,6 @@
 import OpenAI from "openai";
-const openai = new OpenAI();
+dotenv.config();
+const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
 async function generateTextAndImage() {
 let promptTextBody = "deportation"; // placeholder

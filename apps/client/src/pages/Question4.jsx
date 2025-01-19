@@ -52,7 +52,7 @@ export default function Question4() {
       const data = await res.json();
 
       // Navigate to the /story route and pass the data as state
-      navigate('/story', { state: { story: data.story, imageUrl: data.imageUrl } });
+      navigate('/story', { state: { story: data.story, translatedStory: data.translatedStory, imageUrl: data.imageUrl } });
 
     } catch (err) {
       setError(err.message);

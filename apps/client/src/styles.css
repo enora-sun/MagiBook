@@ -555,3 +555,63 @@ input:focus {
 .story-image {
   align-self: center;
 }
+
+.flashcards-container {
+  text-align: center;
+  padding: 40px;
+  background-color: #fdfbf1; /* Light background similar to your image */
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.flashcards-grid {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.flashcard {
+  width: 200px;
+  height: 250px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  transition: transform 0.3s ease-in-out;
+}
+
+.flashcard:hover {
+  transform: translateY(-5px);
+}
+
+.flashcard h3 {
+  font-size: 1.3rem;
+  margin: 0;
+}
+
+.bold-text {
+  font-weight: bold;
+}
+
+.flashcard p {
+  font-size: 1.2rem;
+  color: #333;
+  margin: 10px 0;
+}
+
+.description {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.flashcard-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
