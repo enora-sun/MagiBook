@@ -9,7 +9,7 @@ export default function StoryCollection({ stories }) {
     <div className="story-collection">
       <h2 className="acme">Your Story Collection</h2>
       <div className="stories-grid">
-        <Link to="/question" className="link">
+        <Link to="/question0" className="link">
           <div className="story-card new-story acme">
             <span>+</span>
             <p>Create New Story</p>

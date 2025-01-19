@@ -1,17 +1,16 @@
 import React from 'react';
-import NavBar from '../components/navbar';
+import NavBar from '../components/navbar.jsx';
 import { questions } from "../data/questions.ts"
+import { Link } from 'react-router-dom';
+import Dessert0 from '../images/dessert-1.png';
+import Dessert1 from '../images/dessert-2.png';
+import Dessert2 from '../images/dessert-3.png';
+import Dessert3 from '../images/dessert-4.png';
+import Dessert4 from '../images/dessert-5.png';
 
-export default function Question({ used }) {
+export default function Question0() {
 
-  const count = questions.length;
-  let random = 0;
-  // do { 
-  //   random = Math.floor(Math.random) % count; // 0 <= number < count
-  // } while (used.includes(random));
-
-  used = [...used, random];
-  const q = questions[random];
+  const q = questions[0];
 
   return (
     <div className='home-wrapper'>
@@ -53,14 +52,15 @@ function InputField() {
 }
 
 function Selection({ category }) {
+  const imgs = [Dessert0, Dessert1, Dessert2, Dessert3, Dessert4];
   return (
     <div className="item-selection acme">
       <h2>Select a {category.title}</h2>
       <div className="item-grid">
-        {category.items.map((item) => (
+        {category.items.map((item,index) => (
           <div className="category-card" key={item.id}>
             <img
-              src={`./images/${item.image}`}
+              src={imgs[index]}
               alt={item.name}
               className="item-image"
             />
@@ -75,7 +75,7 @@ function Buttons() {
   return (
     <div className="buttons-section">
       <button className="speak-button abel">I want to speak instead</button>
-      <button className="next-button abel">Next</button>
+      <Link className='link' to="/question1"><button className="next-button abel">Next</button></Link>
     </div>
   );
 }
