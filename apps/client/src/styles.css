@@ -146,6 +146,7 @@ body {
   align-items: center;
   padding: 20px 0;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  position: fixed;
 }
 
 .nav-logo {
@@ -208,6 +209,7 @@ body {
 }
 
 .content-wrapper {
+  margin-left: 5%;
   flex: 1; /* Let the content fill the remaining space */
   padding: 20px;
   overflow-y: auto; /* Enable scrolling if content exceeds the viewport */
@@ -545,7 +547,7 @@ input:focus {
 
 .story-page {
   margin: auto;
-  max-width: 80%;
+  max-width: 70%;
 }
 
 .story-text {
@@ -614,4 +616,8 @@ input:focus {
   width: 100%;
   height: auto;
   border-radius: 8px;
+}
+
+.toggle-btn {
+  margin-bottom: 5%;
 }
