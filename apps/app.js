@@ -1,16 +1,18 @@
 const express = require('express');
-const OpenAI = require('openai');
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
+const cors = require('cors');
 
-dotenv.config()
-
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 3000;
+
+app.use(cors({
+  origin: 'http://localhost:5173',  // Change to match your frontend URL
+  methods: 'GET,POST',
+  allowedHeaders: 'Content-Type'
+}));
 
 app.use(bodyParser.json());
 
@@ -18,7 +20,7 @@ app.get('/', (req, res) => {
   res.send('Welcome to the Storybook Generator API.');
 });
 
-// post to generate story and image
+// post to generate story and image (dummy data for testing)
 app.post('/generate', async (req, res) => {
   const { keywords } = req.body;
 
@@ -28,6 +30,7 @@ app.post('/generate', async (req, res) => {
   }
 
   try {
+    /*
     // text story from OpenAI GPT-4
     const textCompletion = await openai.chat.completions.create({
       model: 'gpt-4o-mini',
@@ -53,7 +56,7 @@ app.post('/generate', async (req, res) => {
             },
         ],
     });
-    
+
     console.log(translationCompletion.choices[0].message);
 
     // generate the image based on the story
@@ -67,12 +70,25 @@ app.post('/generate', async (req, res) => {
 
     if (imageResponse.data && imageResponse.data.length > 0) {
       const imageUrl = imageResponse.data[0].url;
-      console.log("Generated Image URL: ", imageUrl);
-      // send back the story and image URL
-      res.json({ story: storyText, imageUrl: imageUrl });
+    */
+
+    // Dummy data for testing
+    const storyText = `Once upon a time, a little cat named Whiskers found a magical ${keywords[0]} in the forest. With the help of a ${keywords[1]} and a wise old ${keywords[2]}, Whiskers embarked on a journey to discover the ${keywords[3]} and learn the true power of ${keywords[4]}.`;
+    const translatedStory = `从前，一个名叫 Whiskers 的小猫在森林里发现了一只神奇的 ${keywords[0]}。 在 ${keywords[1]} 和睿智的 ${keywords[2]} 的帮助下，Whiskers 开始了发现 ${keywords[3]} 并学习 ${keywords[4]} 真正力量的旅程。`;
+    const imageUrl = 'https://via.placeholder.com/1024';
+
+    console.log("Generated Story (Dummy Data): ", storyText);
+    console.log("Generated Image URL (Dummy Data): ", imageUrl);
+
+    // send back the story and image URL
+    res.json({ story: storyText, translatedStory: translatedStory, imageUrl: imageUrl });
+
+    /*
     } else {
       res.status(500).json({ error: 'Error generating image.' });
     }
+    */
+
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Error generating story and image.' });

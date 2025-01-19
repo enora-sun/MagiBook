@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import NavBar from '../components/navbar.jsx';
 import { questions } from "../data/questions.ts";
-import { Link } from 'react-router-dom';
 import { useAnswers } from '../AnswerContext';
 
 export default function Question4() {
@@ -26,9 +25,32 @@ export default function Question4() {
     setResponse(selectedItem);
   };
 
-  // Save the response before moving to the next question
-  const handleNextClick = () => {
-    updateAnswer(4, response); // Store response in global state at index 4
+  // Save the response and generate story when clicking the button
+  const handleGenerateStory = async () => {
+    updateAnswer(4, response); // Save response in global state at index 4
+
+    try {
+      const response = await fetch('http://localhost:3000/generate', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ keywords: answers }),  // Send keywords to backend
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        console.log('Generated Story:', data.story);
+        console.log('Generated Image URL:', data.imageUrl);
+        alert('Story and image successfully generated!');
+      } else {
+        console.error('Error:', data.error);
+        alert(`Error: ${data.error}`);
+      }
+    } catch (error) {
+      console.error('Error connecting to backend:', error);
+      alert('Failed to connect to the server. Please try again later.');
+    }
   };
 
   return (
@@ -38,12 +60,18 @@ export default function Question4() {
         <Header word={q.title} />
         <InputField response={response} handleInputChange={handleInputChange} />
         <Selection category={q} handleSelection={handleSelection} />
-        
+
         {/* Display current keywords */}
         <CurrentKeywords answers={answers} />
 
         <div className='buttons-section'>
-          <Buttons response={response} handleNextClick={handleNextClick} />
+          <button 
+            className="next-button abel" 
+            onClick={handleGenerateStory} 
+            disabled={!response}
+          >
+            Generate Story
+          </button>
         </div>
       </div>
     </div>
@@ -115,23 +143,6 @@ function CurrentKeywords({ answers }) {
           <li>No keywords selected yet</li>
         )}
       </ul>
-    </div>
-  );
-}
-
-function Buttons({ response, handleNextClick }) {
-  return (
-    <div className="buttons-section">
-      <button className="speak-button abel">I want to speak instead</button>
-      <Link 
-        className='link' 
-        to="/intro" 
-        onClick={handleNextClick}
-      >
-        <button className="next-button abel" disabled={!response}>
-          Next
-        </button>
-      </Link>
     </div>
   );
 }
