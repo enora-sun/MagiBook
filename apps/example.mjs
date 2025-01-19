@@ -2,15 +2,15 @@ import OpenAI from "openai";
 const openai = new OpenAI();
 
 async function generateTextAndImage() {
-let promptTextBody = "Stray Kids (the kpop band)"; // placeholder
+let promptTextBody = "deportation"; // placeholder
 
 const textCompletion = await openai.chat.completions.create({
     model: "gpt-4o-mini",
     messages: [
-        { role: "system", content: "You are a worldly-announced children books' writer." },
+        { role: "system", content: "You are a worldly-announced academic writer." },
         {
             role: "user",
-            content: `Write a 20 word children's story about ${promptTextBody}.`,
+            content: `Write a 40 word horror story about ${promptTextBody}.`,
         },
     ],
 });
@@ -20,7 +20,7 @@ console.log(textCompletion.choices[0].message);
 
 if (textCompletion.choices && textCompletion.choices.length > 0 && textCompletion.choices[0].message) {
     let promptBody = textCompletion.choices[0].message.content; 
-    let refinedImagePrompt = `${promptBody} (illustration without text)`;
+    let refinedImagePrompt = `${promptBody} (illustration without text, absolutely)`;
 
     const translationCompletion = await openai.chat.completions.create({
         model: "gpt-4o-mini",
