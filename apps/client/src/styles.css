@@ -1,7 +1,27 @@
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Abel&family=Acme&family=Mochiy+Pop+One&display=swap');
+
+.mochiy {
+  font-family: "Mochiy Pop One", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.acme {
+  font-family: "Acme", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.abel {
+  font-family: "Abel", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
 /* General Styling */
 body {
   margin: 0;
-  font-family: "Mochiy Pop One", serif;
   background-color: #fdfdf5; /* Light cream background */
 }
 
@@ -137,4 +157,38 @@ body {
 
 .nav-icon:hover {
   transform: scale(1.1); /* Slightly enlarge icon on hover */
+}
+
+/* Welcome Section */
+.welcome-section {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin: 20px;
+  font-family: "Arial", sans-serif;
+}
+
+.user-avatar img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+.welcome-h1 {
+  font-size: 44px;
+  font-weight: bold;
+}
+
+/* Home */
+
+.home-wrapper {
+  display: flex;
+  height: 100vh;
+}
+
+.content-wrapper {
+  flex: 1; /* Let the content fill the remaining space */
+  padding: 20px;
+  overflow-y: auto; /* Enable scrolling if content exceeds the viewport */
+  background-color: #fffdfa; /* Light cream background */
 }
