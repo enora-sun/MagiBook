@@ -42,12 +42,24 @@ app.post('/generate', async (req, res) => {
 
     const storyText = textCompletion.choices[0].message.content;
     console.log("Generated Story: ", storyText);
-
+    
+    const translationCompletion = await openai.chat.completions.create({
+        model: "gpt-4o-mini",
+        messages: [
+            { role: "system", content: "You are a worldly-announced translator." },
+            {
+                role: "user",
+                content: `Translate ${storyText} to mandarin.`,
+            },
+        ],
+    });
+    
+    console.log(translationCompletion.choices[0].message);
 
     // generate the image based on the story
     const imageResponse = await openai.images.generate({
       model: 'dall-e-3',
-      prompt: storyText,
+      prompt: storyText + ' (illustration without text, absolutely)',
       size: '1024x1024',
       quality: 'standard',
       n: 1,
