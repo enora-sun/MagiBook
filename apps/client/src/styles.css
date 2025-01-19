@@ -6,6 +6,10 @@
   border: solid;
 } */
 
+* {
+  background-attachment: fixed;
+}
+
 .mochiy {
   font-family: "Mochiy Pop One", serif;
   font-weight: 400;
@@ -428,6 +432,7 @@ input:focus {
   display: flex;
   gap: 10px; /* Space between items */
   justify-content: center; /* Center items horizontally */
+  max-width: 600px;
 }
 
 .category-card {
@@ -436,6 +441,7 @@ input:focus {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 200px;
 }
 
 .item-image:hover {
@@ -533,4 +539,17 @@ input:focus {
   padding: 5px 0;
   font-size: 18px;
   font-family: 'Acme', sans-serif;
+}
+
+.story-page {
+  margin: auto;
+  max-width: 80%;
+}
+
+.story-text {
+  font-size: 24px;
+}
+
+.story-image {
+  align-self: center;
 }

@@ -2,54 +2,62 @@ import React, { useState, useEffect } from 'react';
 import NavBar from '../components/navbar.jsx';
 import { questions } from "../data/questions.ts";
 import { useAnswers } from '../AnswerContext';
+import { useNavigate } from 'react-router-dom';
+import Img0 from '../images/superman.jpg';
+import Img1 from '../images/batman.png';
+import Img2 from '../images/spiderman.png';
+import Img3 from '../images/iron-man.png';
+import Img4 from '../images/wonder-woman.png';
 
 export default function Question4() {
   const q = questions[4];
-  const { answers, updateAnswer } = useAnswers(); // Access global state
+  const { answers, updateAnswer } = useAnswers();
+  const navigate = useNavigate();  // Hook to navigate to another route
 
-  // State for current response (step 4)
   const [response, setResponse] = useState(answers[4] || '');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-  // Reset the input when the page loads
   useEffect(() => {
     setResponse(answers[4] || '');
   }, [answers]);
 
-  // Handle text input change
   const handleInputChange = (e) => {
     setResponse(e.target.value);
   };
 
-  // Handle selection of an item
   const handleSelection = (selectedItem) => {
     setResponse(selectedItem);
   };
 
-  // Save the response and generate story when clicking the button
   const handleGenerateStory = async () => {
-    updateAnswer(4, response); // Save response in global state at index 4
+    updateAnswer(4, response);
+
+    setLoading(true);
+    setError(null);
 
     try {
-      const response = await fetch('http://localhost:3000/generate', {
+      const res = await fetch('http://localhost:3000/generate', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ keywords: answers }),  // Send keywords to backend
+        body: JSON.stringify({ keywords: answers }),
       });
 
-      const data = await response.json();
-      if (response.ok) {
-        console.log('Generated Story:', data.story);
-        console.log('Generated Image URL:', data.imageUrl);
-        alert('Story and image successfully generated!');
-      } else {
-        console.error('Error:', data.error);
-        alert(`Error: ${data.error}`);
+      if (!res.ok) {
+        throw new Error();
       }
-    } catch (error) {
-      console.error('Error connecting to backend:', error);
-      alert('Failed to connect to the server. Please try again later.');
+
+      const data = await res.json();
+
+      // Navigate to the /story route and pass the data as state
+      navigate('/story', { state: { story: data.story, imageUrl: data.imageUrl } });
+
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -60,19 +68,16 @@ export default function Question4() {
         <Header word={q.title} />
         <InputField response={response} handleInputChange={handleInputChange} />
         <Selection category={q} handleSelection={handleSelection} />
-
-        {/* Display current keywords */}
+        
         <CurrentKeywords answers={answers} />
 
         <div className='buttons-section'>
-          <button 
-            className="next-button abel" 
-            onClick={handleGenerateStory} 
-            disabled={!response}
-          >
-            Generate Story
+          <button className="next-button abel" onClick={handleGenerateStory} disabled={!response || loading}>
+            {loading ? 'Generating...' : 'Generate Story'}
           </button>
         </div>
+
+        {error && <p className="error-message">{error}</p>}
       </div>
     </div>
   );
@@ -106,11 +111,12 @@ function InputField({ response, handleInputChange }) {
 }
 
 function Selection({ category, handleSelection }) {
+  const imgs = [Img0, Img1, Img2, Img3, Img4];
   return (
     <div className="item-selection acme">
       <h2>Select a {category.title}</h2>
       <div className="item-grid">
-        {category.items.map((item) => (
+        {category.items.map((item, index) => (
           <div 
             className="category-card" 
             key={item.id} 
@@ -118,7 +124,7 @@ function Selection({ category, handleSelection }) {
             style={{ cursor: 'pointer' }}
           >
             <img
-              src={`./images/${item.image}`}
+              src={imgs[index]}
               alt={item.name}
               className="item-image"
             />
@@ -129,7 +135,6 @@ function Selection({ category, handleSelection }) {
   );
 }
 
-// Component to display the current keywords
 function CurrentKeywords({ answers }) {
   return (
     <div className="current-keywords">

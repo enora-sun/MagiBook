@@ -3,6 +3,11 @@ import NavBar from '../components/navbar.jsx';
 import { questions } from "../data/questions.ts";
 import { Link } from 'react-router-dom';
 import { useAnswers } from '../AnswerContext';
+import Img0 from '../images/cute-kitty-cat-head-cartoon-element-free-png.png';
+import Img1 from '../images/pngtree-cartoon-dog-puppy-sticker-cute-png-image_6629416.png';
+import Img2 from '../images/png-clipart-tiger-cuteness-cute-animal-pass-background-animals-cat-like-mammal-thumbnail.png';
+import Img3 from '../images/pngtree-cute-lion-cartoon-illustration-png-image_2184684.jpg';
+import Img4 from '../images/116246148.jpg.png';
 
 export default function Question1() {
   const q = questions[1];
@@ -78,11 +83,12 @@ function InputField({ response, handleInputChange }) {
 }
 
 function Selection({ category, handleSelection }) {
+  const imgs = [Img0, Img1, Img2, Img3, Img4];
   return (
     <div className="item-selection acme">
       <h2>Select a {category.title}</h2>
       <div className="item-grid">
-        {category.items.map((item) => (
+        {category.items.map((item, index) => (
           <div 
             className="category-card" 
             key={item.id} 
@@ -90,7 +96,7 @@ function Selection({ category, handleSelection }) {
             style={{ cursor: 'pointer' }}
           >
             <img
-              src={`./images/${item.image}`}
+              src={imgs[index]}
               alt={item.name}
               className="item-image"
             />
