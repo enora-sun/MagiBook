@@ -493,3 +493,19 @@ input:focus {
 .next-button:hover {
   background-color: #91d5ff;
 }
+
+/* Intro */
+
+.intro-wrapper {
+  text-align: center;
+  margin: auto;
+}
+
+.intro-img {
+  width: 60%;
+  height: 40%;
+}
+
+.button {
+  margin: 20px;
+}

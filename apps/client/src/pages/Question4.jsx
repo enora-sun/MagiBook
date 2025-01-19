@@ -69,7 +69,7 @@ function Buttons() {
   return (
     <div className="buttons-section">
       <button className="speak-button abel">I want to speak instead</button>
-      <Link className='link' to="/story"><button className="next-button abel">Next</button></Link>
+      <Link className='link' to="/intro"><button className="next-button abel">Next</button></Link>
     </div>
   );
 }
