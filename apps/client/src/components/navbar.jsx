@@ -10,26 +10,28 @@ export default function NavBar() {
   return (
     <div className="nav">
       <div className="nav-logo">
-        <img src={bookIcon} alt="Logo" className="icon nav-logo-icon" />
+        <Link className='link' to="/">
+          <img src={bookIcon} alt="Logo" className="icon nav-logo-icon" />
+        </Link>
       </div>
       <hr className="nav-divider" />
       <div className="nav-item">
-        <Link to="/home">
+        <Link className='link' to="/home">
           <img src={homeIcon} alt="Home" className="nav-icon" />
         </Link>
       </div>
       <div className="nav-item">
-        <Link to="/cards">
+        <Link className='link' to="/cards">
           <img src={cardsIcon} alt="Cards" className="nav-icon" />
         </Link>
       </div>
       <div className="nav-item">
-        <Link to="/user">
+        <Link className='link' to="/user">
           <img src={profileIcon} alt="Profile" className="nav-icon" />
         </Link>
       </div>
       <div className="nav-item">
-        <Link to="/settings">
+        <Link className='link' to="/settings">
           <img src={settingsIcon} alt="Settings" className="nav-icon" />
         </Link>
       </div>

@@ -8,6 +8,7 @@ import Babar from "../images/book-babar.png";
 import Frog from "../images/book-frog.png";
 import Journey from "../images/book-journey.png";
 import Egg from "../images/book-egg.png";
+import Poppy from "../images/book-poppy.png";
 
 export default function Home() {
 
@@ -22,6 +23,7 @@ export default function Home() {
     { title: "Journey to the Stars", image: `${Journey}` },
     { title: "The Good Egg", image: `${Egg}` },
     { title: "The Story of Babar", image: `${Babar}` },
+    { title: "Green Thumb Poppy", image: `${Poppy}`}
   ];
 
   return (

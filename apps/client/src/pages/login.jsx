@@ -1,7 +1,7 @@
 import React from "react";
 import title from "../images/logo-MagiStory.png";
 import logo from "../images/logo-book.png";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faGoogle, faApple } from "@fortawesome/free-brands-svg-icons";
 
@@ -15,7 +15,7 @@ export default function Login() {
         <img src={logo} alt="Book Logo" className="logo-book" />
       </div>
       <div className="login-buttons">
-        <Link to="/home" >
+        <Link className='link' to="/home" >
           <button className="login-button facebook">
             <FontAwesomeIcon icon={faFacebook} /><span className="spacing"></span> Continue with Facebook
           </button>

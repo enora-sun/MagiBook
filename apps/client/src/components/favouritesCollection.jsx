@@ -13,7 +13,7 @@ export default function FavoritesSection({ favourites }) {
     <div className="favorites-section">
       <h2 className="favorites-h2 acme">Our Favourites</h2>
       <div className="favorites-grid">
-        {favoritesGrid.concat(favoritesGrid)}
+        {favoritesGrid}
       </div>
     </div>
   );

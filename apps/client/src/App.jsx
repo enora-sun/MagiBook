@@ -6,6 +6,7 @@ import Home from './pages/home';
 import Settings from './pages/settings';
 import Cards from './pages/cards';
 import User from './pages/user';
+import Question from './pages/Question';
 
 export const App = () => {
   return (
@@ -16,6 +17,7 @@ export const App = () => {
         <Route path="/settings" element={<Settings />} />
         <Route path="/cards" element={<Cards />}/>
         <Route path="/user" element={<User />}/>
+        <Route path="/question" element={<Question used={[]} />}/>
       </Routes>
     </div>
   )
