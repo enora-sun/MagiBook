@@ -2,7 +2,7 @@ import OpenAI from "openai";
 const openai = new OpenAI();
 
 async function generateTextAndImage() {
-let promptTextBody = "matcha"; // placeholder
+let promptTextBody = "Stray Kids (the kpop band)"; // placeholder
 
 const textCompletion = await openai.chat.completions.create({
     model: "gpt-4o-mini",
@@ -18,12 +18,13 @@ const textCompletion = await openai.chat.completions.create({
 console.log(textCompletion.choices[0].message);
 
 if (textCompletion.choices && textCompletion.choices.length > 0 && textCompletion.choices[0].message) {
-    let promptImageBody = textCompletion.choices[0].message.content; // Use the generated text as the image prompt
+    let promptImageBody = textCompletion.choices[0].message.content; 
+    let refinedPrompt = `${promptImageBody} (illustration without text)`;
 
     // Generate image
     const imageResponse = await openai.images.generate({
         model: "dall-e-3",
-        prompt: promptImageBody,
+        prompt: refinedPrompt,
         size: "1024x1024",
         quality: "standard",
         n: 1,
