@@ -35,15 +35,19 @@ To run MagiStory locally, follow these steps:
    cd client
    npm run dev
 
+## Screenshots
 
-   <img width="720" alt="Screenshot 2025-02-06 at 1 46 17 AM" src="https://github.com/user-attachments/assets/5fc736a8-a743-457b-85fc-5d8012567cbb" />
+<img width="720" alt="Screenshot 2025-02-06 at 1 46 17 AM" src="https://github.com/user-attachments/assets/5fc736a8-a743-457b-85fc-5d8012567cbb" />
 
-   <img width="720" alt="Screenshot 2025-02-06 at 1 44 53 AM" src="https://github.com/user-attachments/assets/f4fad88d-a743-47d3-83e6-1f1645f1af97" />
+<img width="720" alt="Screenshot 2025-02-06 at 1 44 53 AM" src="https://github.com/user-attachments/assets/f4fad88d-a743-47d3-83e6-1f1645f1af97" />
 
 <img width="720" alt="Screenshot 2025-02-06 at 1 43 24 AM" src="https://github.com/user-attachments/assets/67bf8a3a-f99d-4b19-8e7a-1795ed7c8e5d" />
+
+Example stories produced
 
 <img width="720" alt="Screenshot 2025-02-06 at 1 40 57 AM" src="https://github.com/user-attachments/assets/004524f9-593a-4348-83e5-c91786ebf115" />
 
 <img width="720" alt="Screenshot 2025-02-06 at 1 40 39 AM" src="https://github.com/user-attachments/assets/e79c56cf-fb30-4378-a1da-a53e4463588d" />
 
+User Inferface
 
