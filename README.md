@@ -1,6 +1,12 @@
+<<<<<<< HEAD
+# MagiBook
+## Introduction
+Storybook Generator is a web application designed to address the challenge of language loss among second-generation children in Canada. These children often struggle with maintaining their cultural heritage due to a disconnect from their parents' native languages.
+=======
 # MagiStory
 ## Introduction
 MagiStory is a web application designed to address the challenge of language loss among second-generation children in Canada. These children often struggle with maintaining their cultural heritage due to a disconnect from their parents' native languages.
+>>>>>>> 23c99217cc5a783bfa00f2b803b6d57f347a4c13
 
 ## Problem Defined
 Second-generation children living in English-speaking countries are losing touch with their parents’ mother tongues, leading to a significant loss in cultural connection and communication barriers within families.
@@ -24,7 +30,11 @@ Our mission is to provide interactive and appealing storybooks to children to ex
 Ensure you have Node.js and npm installed on your machine. 
 
 ### Installation
+<<<<<<< HEAD
+To run Storybook Generator locally, follow these steps:
+=======
 To run MagiStory locally, follow these steps:
+>>>>>>> 23c99217cc5a783bfa00f2b803b6d57f347a4c13
 
 1. Clone the repository:
    ```bash
@@ -33,6 +43,9 @@ To run MagiStory locally, follow these steps:
    npm install
 3. Navigate to the Client Folder to Run the Frontend
    cd client
+<<<<<<< HEAD
+   npm run dev
+=======
    npm run dev
 
 ## Screenshots
@@ -51,3 +64,4 @@ Example stories produced
 
 User Inferface
 
+>>>>>>> 23c99217cc5a783bfa00f2b803b6d57f347a4c13
